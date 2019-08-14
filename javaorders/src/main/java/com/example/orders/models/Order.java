@@ -22,6 +22,15 @@ public class Order {
     @JsonIgnoreProperties("customers")
     private List<Customer> customers = new ArrayList<>();
 
+    public Order(double ordamount, double advanceamount, String orddescription) {
+        this.ordamount = ordamount;
+        this.advanceamount = advanceamount;
+        this.orddescription = orddescription;
+    }
+
+    public Order() {
+    }
+
     public long getOrdnum() {
         return ordnum;
     }
