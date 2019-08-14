@@ -146,4 +146,12 @@ public class Customer {
     public void setAgents(List<Agent> agents) {
         this.agents = agents;
     }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 }
