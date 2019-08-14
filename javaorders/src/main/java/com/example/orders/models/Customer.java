@@ -31,6 +31,10 @@ public class Customer {
     @JsonIgnoreProperties("agents")
     private List<Agent> agents = new ArrayList<>();
 
+    @OneToMany(mappedBy = "custcode", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("custcode")
+    private List<Order> orders = new ArrayList<>();
+
     public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone) {
         this.custname = custname;
         this.custcity = custcity;
