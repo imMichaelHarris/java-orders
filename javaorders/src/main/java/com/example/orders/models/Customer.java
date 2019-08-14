@@ -1,10 +1,29 @@
 package com.example.orders.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
 public class Customer {
+    @Id
+    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long custcode;
 
+    @Column(nullable = false)
+    private String custname;
+    private String custcity;
+    private String workingarea;
+    private String custcountry;
+    private String grade;
+    private double openingamt;
+    private double receiveamt;
+    private double paymentamt;
+    private double outstandingamt;
+    private String phone;
+
+    @OneToMany(mappedBy = "agent")
+    private List<Agent> agents = new ArrayList<>();
 }
