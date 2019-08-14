@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Orders {
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,15 +20,15 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "custcode")
     @JsonIgnoreProperties("customers")
-    private List<Customer> customers = new ArrayList<>();
+    private List<Customers> customers = new ArrayList<>();
 
-    public Order(double ordamount, double advanceamount, String orddescription) {
+    public Orders(double ordamount, double advanceamount, String orddescription) {
         this.ordamount = ordamount;
         this.advanceamount = advanceamount;
         this.orddescription = orddescription;
     }
 
-    public Order() {
+    public Orders() {
     }
 
     public long getOrdnum() {
@@ -63,11 +63,11 @@ public class Order {
         this.orddescription = orddescription;
     }
 
-    public List<Customer> getCustomers() {
+    public List<Customers> getCustomers() {
         return customers;
     }
 
-    public void setCustomers(List<Customer> customers) {
+    public void setCustomers(List<Customers> customers) {
         this.customers = customers;
     }
 }

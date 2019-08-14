@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
-public class Customer {
+public class Customers {
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,13 +29,13 @@ public class Customer {
     @ManyToOne
     @JoinColumn(name = "agentcode")
     @JsonIgnoreProperties("agents")
-    private List<Agent> agents = new ArrayList<>();
+    private List<Agents> agents = new ArrayList<>();
 
     @OneToMany(mappedBy = "custcode", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("custcode")
-    private List<Order> orders = new ArrayList<>();
+    private List<Orders> orders = new ArrayList<>();
 
-    public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone) {
+    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone) {
         this.custname = custname;
         this.custcity = custcity;
         this.workingarea = workingarea;
@@ -48,7 +48,7 @@ public class Customer {
         this.phone = phone;
     }
 
-    public Customer() {
+    public Customers() {
     }
 
     public long getCustcode() {
@@ -139,19 +139,19 @@ public class Customer {
         this.phone = phone;
     }
 
-    public List<Agent> getAgents() {
+    public List<Agents> getAgents() {
         return agents;
     }
 
-    public void setAgents(List<Agent> agents) {
+    public void setAgents(List<Agents> agents) {
         this.agents = agents;
     }
 
-    public List<Order> getOrders() {
+    public List<Orders> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(List<Orders> orders) {
         this.orders = orders;
     }
 }

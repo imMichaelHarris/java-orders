@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "agents")
-public class Agent {
+public class Agents {
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,9 +22,9 @@ public class Agent {
 
     @OneToMany(mappedBy = "agentcode", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("agentcode")
-    private List<Customer> customers = new ArrayList<>();
+    private List<Customers> customers = new ArrayList<>();
 
-    public Agent(String agentname, String workingarea, double commission, String phone, String country) {
+    public Agents(String agentname, String workingarea, double commission, String phone, String country) {
         this.agentname = agentname;
         this.workingarea = workingarea;
         this.commission = commission;
@@ -32,7 +32,7 @@ public class Agent {
         this.country = country;
     }
 
-    public Agent() {
+    public Agents() {
     }
 
     public long getAgentcode() {
@@ -83,11 +83,11 @@ public class Agent {
         this.country = country;
     }
 
-    public List<Customer> getCustomers() {
+    public List<Customers> getCustomers() {
         return customers;
     }
 
-    public void setCustomers(List<Customer> customers) {
+    public void setCustomers(List<Customers> customers) {
         this.customers = customers;
     }
 }
