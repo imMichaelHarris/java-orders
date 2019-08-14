@@ -27,6 +27,22 @@ public class Customer {
     @OneToMany(mappedBy = "agent")
     private List<Agent> agents = new ArrayList<>();
 
+    public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone) {
+        this.custname = custname;
+        this.custcity = custcity;
+        this.workingarea = workingarea;
+        this.custcountry = custcountry;
+        this.grade = grade;
+        this.openingamt = openingamt;
+        this.receiveamt = receiveamt;
+        this.paymentamt = paymentamt;
+        this.outstandingamt = outstandingamt;
+        this.phone = phone;
+    }
+
+    public Customer() {
+    }
+
     public long getCustcode() {
         return custcode;
     }
