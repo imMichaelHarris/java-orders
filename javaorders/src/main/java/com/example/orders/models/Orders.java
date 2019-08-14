@@ -15,16 +15,18 @@ public class Orders {
     private long ordnum;
     private double ordamount;
     private double advanceamount;
-    private String orddescription;
+
 
     @ManyToOne
     @JoinColumn(name = "custcode")
     @JsonIgnoreProperties("customers")
-    private List<Customers> customers = new ArrayList<>();
+    private Customers customer;
+    private String orddescription;
 
-    public Orders(double ordamount, double advanceamount, String orddescription) {
+    public Orders(double ordamount, double advanceamount, Customers customer, String orddescription) {
         this.ordamount = ordamount;
         this.advanceamount = advanceamount;
+        this.customer = customer;
         this.orddescription = orddescription;
     }
 
@@ -55,19 +57,19 @@ public class Orders {
         this.advanceamount = advanceamount;
     }
 
+    public Customers getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customers customer) {
+        this.customer = customer;
+    }
+
     public String getOrddescription() {
         return orddescription;
     }
 
     public void setOrddescription(String orddescription) {
         this.orddescription = orddescription;
-    }
-
-    public List<Customers> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<Customers> customers) {
-        this.customers = customers;
     }
 }

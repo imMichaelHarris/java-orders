@@ -29,14 +29,14 @@ public class Customers {
     @ManyToOne
     @JoinColumn(name = "agentcode")
     @JsonIgnoreProperties("agents")
-    private List<Agents> agents = new ArrayList<>();
+    private Agents agent;
 
     @OneToMany(mappedBy = "custcode", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("custcode")
     private List<Orders> orders = new ArrayList<>();
 
-    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, List<Agents> agents) {
-        this.custname = custname;
+    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, Agents agent) {
+            this.custname = custname;
         this.custcity = custcity;
         this.workingarea = workingarea;
         this.custcountry = custcountry;
@@ -46,7 +46,7 @@ public class Customers {
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
-        this.agents = agents;
+        this.agent = agent;
     }
 
     public Customers() {
@@ -140,12 +140,12 @@ public class Customers {
         this.phone = phone;
     }
 
-    public List<Agents> getAgents() {
-        return agents;
+    public Agents getAgent() {
+        return agent;
     }
 
-    public void setAgents(List<Agents> agents) {
-        this.agents = agents;
+    public void setAgent(Agents agent) {
+        this.agent = agent;
     }
 
     public List<Orders> getOrders() {
