@@ -1,6 +1,10 @@
 package com.example.orders.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "agents")
@@ -15,6 +19,10 @@ public class Agent {
     private double commission;
     private String phone;
     private String country;
+
+    @OneToMany(mappedBy = "agentcode", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("agentcode")
+    private List<Customer> customers = new ArrayList<>();
 
     public Agent(String agentname, String workingarea, double commission, String phone, String country) {
         this.agentname = agentname;
